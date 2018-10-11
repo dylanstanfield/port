@@ -6,7 +6,6 @@ module.exports = {
     options: [{
         name: 'port',
         position: 1,
-        display: '<port>',
         required: true
     }],
     description: 'Kill the process running on a given port',
