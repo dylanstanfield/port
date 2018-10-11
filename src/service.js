@@ -1,7 +1,7 @@
 const process = require('child_process');
 
 const service = {
-    listPorts: function() {
+    getActivePorts: function() {
         return execute('lsof -PiTCP -sTCP:LISTEN')
             .then((result) => parseActivePorts(result.stdout))
             .catch((err) => console.error(err));
@@ -10,7 +10,7 @@ const service = {
     getProcessForPort: function(port) {
         return service.getActivePorts()
             .then((lines) => {
-                const data = lines.find((line) => line.port === port);
+                const data = lines.find((line) => line.port == port);
                 return data ? data.pid : null;
             });
     },
