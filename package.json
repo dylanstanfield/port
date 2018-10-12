@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "pkg src/index.js -o port",
+    "install": "cp port /usr/local/bin",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
