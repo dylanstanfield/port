@@ -37,6 +37,10 @@ function execute(command) {
     });
 }
 
+function _byPortAscending(a, b) {
+    return parseInt(a.port) - parseInt(b.port);
+}
+
 function parseActivePorts(output) {
     const rows = output.split('\n').filter(empty);
     rows.shift();
@@ -57,8 +61,7 @@ function parseActivePorts(output) {
             port: data[8].split(':').pop()
         };
     });
-
-    return processes;
+    return processes.sort(_byPortAscending);
 }
 
 function empty(data) { return !!data; }
